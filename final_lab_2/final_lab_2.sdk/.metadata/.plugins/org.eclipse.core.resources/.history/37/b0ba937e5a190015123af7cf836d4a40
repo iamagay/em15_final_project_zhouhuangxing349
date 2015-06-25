@@ -1,0 +1,33 @@
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xutil.h"
+  
+
+//====================================================
+
+int main (void) 
+{
+
+    XGpio led, button,switch;
+	int i, button_check, switch_check;
+	
+    xil_printf("-- Start of the Program --\r\n");
+ 
+    XGpio_Initialize(&switch, XPAR_SWITCH_DEVICE_ID);
+	XGpio_SetDataDirection(&switch, 1, 0xffffffff);
+
+	XGpio_Initialize(&button, XPAR_BUTTON_DEVICE_ID);
+	XGpio_SetDataDirection(&button, 1, 0xffffffff);
+
+	XGpio_Initialize(&led, XPAR_BUTTON_DEVICE_ID);
+	XGpio_SetDataDirection(&led, 1, 0x00000000);
+	
+	
+	while (1)
+	{
+	  button_check = XGpio_DiscreteRead(&button, 1);
+	  switch_check = XGpio_DiscreteRead(&switch, 1);
+	}
+ 
+}
+ 
